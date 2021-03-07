@@ -1,11 +1,12 @@
-package com.mov.moviecatalogue
+package com.mov.moviecatalogue.ui.reader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mov.moviecatalogue.R
 
-class MainActivity : AppCompatActivity() {
+class MovieReaderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_movie_reader)
     }
 }
