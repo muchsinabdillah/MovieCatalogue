@@ -1,12 +1,12 @@
-package com.mov.moviecatalogue
+package com.mov.moviecatalogue.ui.detail
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.data.MovieEntity
 import com.mov.moviecatalogue.databinding.ActivityDetailMovieBinding
 import com.mov.moviecatalogue.databinding.ContentDetailMovieBinding
@@ -21,7 +21,6 @@ class DetailMovieActivity : AppCompatActivity() {
 
         val activityDetailMovieBinding = ActivityDetailMovieBinding.inflate(layoutInflater)
         detailContentBinding = activityDetailMovieBinding.detailContent
-
         setContentView(activityDetailMovieBinding.root)
         setSupportActionBar(activityDetailMovieBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

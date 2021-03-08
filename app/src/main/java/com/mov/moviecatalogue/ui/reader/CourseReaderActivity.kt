@@ -1,7 +1,8 @@
-package com.mov.moviecatalogue
+package com.mov.moviecatalogue.ui.reader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mov.moviecatalogue.R
 
 class CourseReaderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,8 +2,6 @@ package com.mov.moviecatalogue.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mov.moviecatalogue.R
-import com.mov.moviecatalogue.SectionsPagerAdapter
 import com.mov.moviecatalogue.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.mov.moviecatalogue
+package com.mov.moviecatalogue.ui.movie
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.data.MovieEntity
 import com.mov.moviecatalogue.databinding.ItemsMovieBinding
+import com.mov.moviecatalogue.ui.detail.DetailMovieActivity
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviewViewHolder>() {
     private var listMovie = ArrayList<MovieEntity>()

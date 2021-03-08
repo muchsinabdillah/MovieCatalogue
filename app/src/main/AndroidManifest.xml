@@ -13,11 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".DetailMovieActivity"
-            android:label="@string/title_activity_detail_movie"
-            android:theme="@style/Theme.MovieCatalogue.NoActionBar"></activity>
-        <activity android:name=".CourseReaderActivity" />
+
+        <activity android:name=".ui.reader.CourseReaderActivity" />
         <activity
             android:name=".ui.detail.DetailMovieActivity"
             android:label="@string/title_activity_detail_movie"

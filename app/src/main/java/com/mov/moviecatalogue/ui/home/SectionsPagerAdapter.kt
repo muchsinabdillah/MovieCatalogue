@@ -1,10 +1,11 @@
-package com.mov.moviecatalogue
+package com.mov.moviecatalogue.ui.home
 
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.ui.movie.MovieFragment
 import com.mov.moviecatalogue.ui.tvshow.TvShowFragment
 

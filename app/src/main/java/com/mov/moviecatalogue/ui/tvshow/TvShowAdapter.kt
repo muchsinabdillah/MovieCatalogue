@@ -1,14 +1,17 @@
-package com.mov.moviecatalogue
+package com.mov.moviecatalogue.ui.tvshow
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.data.MovieEntity
 import com.mov.moviecatalogue.data.TvShowEntity
 import com.mov.moviecatalogue.databinding.ItemsTvshowBinding
+import com.mov.moviecatalogue.ui.detail.DetailMovieActivity
 
 class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
     private var listTvshow = ArrayList<TvShowEntity>()
@@ -42,6 +45,7 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                     intent.putExtra(DetailMovieActivity.EXTRA_TVSHOW, datamovie)
                     itemView.context.startActivity(intent)
                 }
+
                 Glide.with(itemView.context)
                     .load(tvshow.imagePath)
                     .apply(
@@ -50,6 +54,7 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                     .into(imgPoster)
             }
         }
+
     }
 
 }
