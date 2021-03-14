@@ -9,8 +9,6 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.utils.DataDummy
-import junit.framework.TestCase
-import org.hamcrest.CoreMatchers.endsWith
 import org.junit.Rule
 import org.junit.Test
 

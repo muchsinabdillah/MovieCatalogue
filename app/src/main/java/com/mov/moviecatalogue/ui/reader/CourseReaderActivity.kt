@@ -1,7 +1,7 @@
 package com.mov.moviecatalogue.ui.reader
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.mov.moviecatalogue.R
 
 class CourseReaderActivity : AppCompatActivity() {

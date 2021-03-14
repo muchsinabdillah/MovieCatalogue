@@ -1,5 +1,4 @@
 package com.mov.moviecatalogue.ui.movie
-import junit.framework.TestCase
 import junit.framework.TestCase.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
