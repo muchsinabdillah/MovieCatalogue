@@ -5,45 +5,67 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:clipToPadding="false"
-    android:descendantFocusability="blocksDescendants"
-    android:padding="16dp">
+    android:descendantFocusability="blocksDescendants">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/image_backdrop"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/app_name" />
 
     <ImageView
         android:id="@+id/image_poster"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="18dp"
+        android:layout_width="107dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="120dp"
         android:src="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/text_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_poster"
-        tools:text="Title" />
-    <TextView
-        android:id="@+id/text_title_genre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/dt_genre"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="28sp"
         android:textStyle="bold"
+        android:ellipsize="end"
+        android:maxLines="2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_poster"
+        app:layout_constraintTop_toBottomOf="@+id/image_backdrop"
+        tools:text="Title" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:numStars="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_title"
         app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
     <TextView
-        android:id="@+id/text_genre"
+        android:id="@+id/text_status_movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -51,25 +73,38 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_title_genre"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_genre"
-        tools:text="Genre" />
+        app:layout_constraintStart_toStartOf="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        tools:text="Release" />
 
-    <TextView
-        android:id="@+id/text_title_headline"
+            <TextView
+                android:id="@+id/text_release_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.288"
+                app:layout_constraintStart_toEndOf="@+id/text_status_movie"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                tools:text="Release" />
+
+            <TextView
+        android:id="@+id/text_title_tagLine"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/dt_headline"
+        android:text="@string/tagline"
         android:layout_marginTop="30dp"
         android:textColor="@color/teal_700"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_genre"
-        app:layout_constraintTop_toBottomOf="@+id/text_genre"/>
+        app:layout_constraintStart_toStartOf="@+id/image_poster"
+        app:layout_constraintTop_toBottomOf="@+id/image_poster"/>
     <TextView
-        android:id="@+id/text_headline"
+        android:id="@+id/text_tagLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -77,24 +112,23 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_title_headline"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_headline"
+        app:layout_constraintStart_toStartOf="@+id/text_title_tagLine"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_tagLine"
         tools:text="Headline" />
-
 
     <TextView
         android:id="@+id/text_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/dt_overview"
+        android:layout_marginTop="30dp"
+        android:text="@string/description"
         android:textColor="@color/teal_700"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_headline" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_tagLine"
+        app:layout_constraintTop_toBottomOf="@+id/text_tagLine"/>
 
     <TextView
         android:id="@+id/text_description"
@@ -103,23 +137,22 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_desc"
         app:layout_constraintTop_toBottomOf="@+id/text_desc"
-        tools:text="Overview Context" />
+        tools:text="Description" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/image_poster"
-        app:layout_constraintEnd_toEndOf="@+id/image_poster"
-        app:layout_constraintStart_toStartOf="@+id/image_poster"
-        app:layout_constraintTop_toTopOf="@+id/image_poster"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

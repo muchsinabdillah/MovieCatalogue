@@ -56,6 +56,20 @@
             app:layout_constraintStart_toStartOf="@+id/mv_item_title"
             app:layout_constraintTop_toBottomOf="@+id/mv_item_title"
             tools:text="Genre" />
-
+        <RatingBar
+            android:id="@+id/mv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:isIndicator="true"
+            android:scrollbarStyle="outsideInset"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="@+id/mv_genre"
+            app:layout_constraintTop_toBottomOf="@+id/mv_genre"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

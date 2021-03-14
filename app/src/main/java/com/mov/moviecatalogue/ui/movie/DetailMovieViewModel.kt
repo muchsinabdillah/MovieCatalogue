@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.mov.moviecatalogue.data.model.MovieEntity
 import com.mov.moviecatalogue.data.source.CatalogueRepository
 
-class MovieViewModel(private val catalogueRepository: CatalogueRepository) : ViewModel() {
-   var page = 1
-    fun getMovies(): LiveData<List<MovieEntity>>{
-        return catalogueRepository.getAllMovies(page)
+class DetailMovieViewModel(private val catalogueRepository: CatalogueRepository) : ViewModel() {
+    var movieId: Int = 0
+
+    fun getMovie(): LiveData<MovieEntity> {
+        return catalogueRepository.getMovie(movieId)
     }
+
 }

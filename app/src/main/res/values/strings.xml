@@ -9,4 +9,6 @@
     <string name="dt_genre">Genre</string>
     <string name="home">Movie</string>
     <string name="bookmark">TvShow</string>
+    <string name="tagline">Tagline</string>
+    <string name="description">Description</string>
 </resources>

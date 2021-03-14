@@ -1,5 +1,7 @@
 package com.mov.moviecatalogue.ui.tvshow
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,18 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mov.moviecatalogue.R
-import com.mov.moviecatalogue.data.MovieEntity
-import com.mov.moviecatalogue.data.TvShowEntity
+import com.mov.moviecatalogue.data.model.ContentId
+import com.mov.moviecatalogue.data.model.MovieEntity
+import com.mov.moviecatalogue.data.model.TvShowEntity
 import com.mov.moviecatalogue.databinding.ItemsTvshowBinding
 import com.mov.moviecatalogue.ui.detail.DetailMovieActivity
+import com.mov.moviecatalogue.utils.UtilsConstanta
+import java.text.SimpleDateFormat
+import java.util.*
 
-class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
-    private var listTvshow = ArrayList<TvShowEntity>()
-
+class TvShowAdapter(): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
+    private var listTvshow: MutableList<TvShowEntity> = mutableListOf()
     fun setTvshow(tvshow: List<TvShowEntity>?) {
         if (tvshow == null) return
         this.listTvshow.clear()
         this.listTvshow.addAll(tvshow)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
@@ -34,19 +40,28 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
     override fun getItemCount(): Int = listTvshow.size
 
     class TvShowViewHolder(private val binding: ItemsTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SimpleDateFormat")
         fun bind(tvshow: TvShowEntity) {
             with(binding) {
                 tvItemTitle.text = tvshow.title
-                tvGenre.text = tvshow.genre
+                var date: Date? = null
+                var formatter = SimpleDateFormat("yyyy-MM-dd")
+                date = formatter.parse(tvshow.firstAirDate)
+                formatter = SimpleDateFormat("dd-MM-yyyy")
+                tvGenre.text = formatter.format(date)
+                mvRating.numStars = 5
+                val bagidua : Float = tvshow.rating/2
+                mvRating.rating = bagidua
+                mvRating.stepSize =  .5f
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailMovieActivity::class.java)
-                    val datamovie = MovieEntity(tvshow.movieId,tvshow.title,tvshow.genre,tvshow.headline,tvshow.overview,tvshow.imagePath)
-                    intent.putExtra(DetailMovieActivity.EXTRA_TVSHOW, datamovie)
+                    val contentID = ContentId(tvshow.id)
+                    intent.putExtra(DetailMovieActivity.EXTRA_TVSHOW, contentID)
                     itemView.context.startActivity(intent)
                 }
 
                 Glide.with(itemView.context)
-                    .load(tvshow.imagePath)
+                    .load(UtilsConstanta.IMG_URL + tvshow.poster)
                     .apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
                             .error(R.drawable.ic_error))
