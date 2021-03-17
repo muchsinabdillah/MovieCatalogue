@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.mov.moviecatalogue.DetailTvShow
 import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.data.model.ContentId
 import com.mov.moviecatalogue.data.model.MovieEntity
@@ -18,15 +19,13 @@ import com.mov.moviecatalogue.utils.UtilsConstanta
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TvShowAdapter(): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
+class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
     private var listTvshow: MutableList<TvShowEntity> = mutableListOf()
-    fun setTvshow(tvshow: List<TvShowEntity>?) {
-        if (tvshow == null) return
+    fun setTvshow(tvshow: List<TvShowEntity>) {
         this.listTvshow.clear()
         this.listTvshow.addAll(tvshow)
         notifyDataSetChanged()
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
         val itemsTvShowBinding = ItemsTvshowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TvShowViewHolder(itemsTvShowBinding)
@@ -54,9 +53,9 @@ class TvShowAdapter(): RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 mvRating.rating = bagidua
                 mvRating.stepSize =  .5f
                 itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailMovieActivity::class.java)
+                    val intent = Intent(itemView.context, DetailTvShow::class.java)
                     val contentID = ContentId(tvshow.id)
-                    intent.putExtra(DetailMovieActivity.EXTRA_TVSHOW, contentID)
+                    intent.putExtra(DetailTvShow.EXTRA_TVSHOW, contentID)
                     itemView.context.startActivity(intent)
                 }
 

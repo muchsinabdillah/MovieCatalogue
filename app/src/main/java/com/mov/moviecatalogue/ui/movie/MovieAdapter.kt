@@ -18,7 +18,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.MoviewViewHolder>() {
+class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviewViewHolder>() {
     private var listMovie: MutableList<MovieEntity> = mutableListOf()
 
     fun setMovies(movies: List<MovieEntity>) {

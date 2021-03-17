@@ -13,7 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".DetailTvShow"
+            android:label="@string/title_activity_detail_tvshow"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:theme="@style/Theme.MovieCatalogue.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivity" />
+        </activity>
         <activity android:name=".ui.reader.CourseReaderActivity" />
         <activity
             android:name=".ui.detail.DetailMovieActivity"

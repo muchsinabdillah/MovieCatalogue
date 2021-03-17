@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Movie Catalogue</string>
     <string name="title_activity_detail_movie">DetailMovieActivity</string>
+    <string name="title_activity_detail_tvshow">Detail Tv Show</string>
     <!-- Strings used for fragments for navigation -->
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="dt_overview">Overview</string>
-    <string name="dt_headline">Headline</string>
-    <string name="dt_genre">Genre</string>
     <string name="home">Movie</string>
     <string name="bookmark">TvShow</string>
     <string name="tagline">Tagline</string>
