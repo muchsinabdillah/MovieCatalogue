@@ -28,11 +28,6 @@ class HomeActivityTest {
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyMovie[0].title)))
-        onView(withId(R.id.text_genre)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_genre)).check(matches(withText(dummyMovie[0].description)))
-        onView(withId(R.id.text_headline)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_headline)).check(matches(withText(dummyMovie[0].description)))
-        onView(withId(R.id.text_genre)).check(matches(isDisplayed()))
     }
     @Test
     fun loadTvShow() {
@@ -47,11 +42,6 @@ class HomeActivityTest {
         onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyTvShow[0].title)))
-        onView(withId(R.id.text_genre)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_genre)).check(matches(withText(dummyTvShow[0].description)))
-        onView(withId(R.id.text_headline)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_headline)).check(matches(withText(dummyTvShow[0].description)))
-        onView(withId(R.id.text_genre)).check(matches(isDisplayed()))
     }
 
 }
