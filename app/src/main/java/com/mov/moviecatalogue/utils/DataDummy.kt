@@ -203,4 +203,7 @@ object DataDummy {
         )
         return tvshow
     }
+    fun generateRemoteDummyContent(movieId: Int): MovieEntity {
+        return MovieEntity(movieId , "This is a dummy content", "This is a dummy content", "This is a dummy content", "This is a dummy content", .5f, "This is a dummy content", "This is a dummy content", "This is a dummy content")
+    }
 }

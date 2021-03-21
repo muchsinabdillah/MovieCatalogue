@@ -99,4 +99,14 @@ class RemoteRepository {
         )
         return tvShowById
     }
+    interface   LoadMOvieCallBack {
+        fun onAllCoursesReceived(moviesResponse: List<MovieEntity>)
+    }
+    interface LoadTvShowCallBack {
+        fun onAllCoursesReceived(tvShowResponse: List<TvShowEntity>)
+    }
+
+    interface LoadContentCallback {
+        fun onContentReceived(contentResponse: MovieEntity)
+    }
 }

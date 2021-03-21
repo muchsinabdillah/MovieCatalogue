@@ -5,9 +5,10 @@ import com.mov.moviecatalogue.data.model.MovieEntity
 import com.mov.moviecatalogue.data.model.TvShowEntity
 import com.mov.moviecatalogue.data.source.remote.RemoteRepository
 
-class CatalogueRepository(
+class CatalogueRepository private constructor(
         private val remoteRepository: RemoteRepository
-        ): MovieCatalogueDataSource {
+): MovieCatalogueDataSource {
+
     companion object {
         fun getInstance(remoteRepository: RemoteRepository ): CatalogueRepository {
             return CatalogueRepository(remoteRepository)

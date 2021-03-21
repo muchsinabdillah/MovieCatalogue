@@ -29,7 +29,7 @@ class TvShowViewModelTest   {
     private lateinit var catalogueRepository : CatalogueRepository
 
     @Mock
-    private   var observer= Mockito.mock(Observer::class.java) as Observer<List<TvShowEntity>>
+    private lateinit var observer: Observer<List<TvShowEntity>>
 
 
     @Before
@@ -47,7 +47,7 @@ class TvShowViewModelTest   {
         val courseEntities = viewModel.getTvshows().value
         Mockito.verify(catalogueRepository).getAllTvShow(1)
         Assert.assertNotNull(courseEntities)
-        TestCase.assertEquals(5, courseEntities?.size)
+        TestCase.assertEquals(10, courseEntities?.size)
 
         viewModel.getTvshows().observeForever(observer)
         Mockito.verify(observer).onChanged(dummyCourses)

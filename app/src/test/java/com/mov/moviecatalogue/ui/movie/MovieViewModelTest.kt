@@ -3,6 +3,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.mov.moviecatalogue.data.model.MovieEntity
+import com.mov.moviecatalogue.data.model.TvShowEntity
 import com.mov.moviecatalogue.data.source.CatalogueRepository
 import com.mov.moviecatalogue.utils.DataDummy
 import junit.framework.TestCase.assertEquals
@@ -30,7 +31,7 @@ class MovieViewModelTest {
     private lateinit var catalogueRepository : CatalogueRepository
 
     @Mock
-    private   var observer= Mockito.mock(Observer::class.java) as Observer<List<MovieEntity>>
+    private lateinit var observer: Observer<List<MovieEntity>>
 
     @Before
     fun setUp() {
@@ -48,7 +49,7 @@ class MovieViewModelTest {
         val courseEntities = viewModel.getMovies().value
         verify(catalogueRepository).getAllMovies(1)
         assertNotNull(courseEntities)
-        assertEquals(5, courseEntities?.size)
+        assertEquals(10, courseEntities?.size)
 
         viewModel.getMovies().observeForever(observer)
         verify(observer).onChanged(dummyCourses)
