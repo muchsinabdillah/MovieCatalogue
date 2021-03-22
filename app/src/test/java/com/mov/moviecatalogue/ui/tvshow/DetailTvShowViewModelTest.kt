@@ -37,7 +37,7 @@ class DetailTvShowViewModelTest {
     }
 
     @Test
-    fun getTvShow(){
+    fun getTvShow() {
         val course = MutableLiveData<TvShowEntity>()
         course.value = dummyTvshow
 

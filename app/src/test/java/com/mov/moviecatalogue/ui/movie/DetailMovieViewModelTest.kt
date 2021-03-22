@@ -1,13 +1,11 @@
 package com.mov.moviecatalogue.ui.movie
 
-import android.graphics.Movie
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.mov.moviecatalogue.data.model.MovieEntity
 import com.mov.moviecatalogue.data.source.CatalogueRepository
 import com.mov.moviecatalogue.utils.DataDummy
-import junit.framework.TestCase
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import org.junit.Before
@@ -15,7 +13,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner

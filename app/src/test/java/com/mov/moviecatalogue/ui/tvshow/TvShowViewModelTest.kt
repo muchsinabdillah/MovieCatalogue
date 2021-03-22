@@ -1,11 +1,10 @@
 package com.mov.moviecatalogue.ui.tvshow
+
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.mov.moviecatalogue.data.model.MovieEntity
 import com.mov.moviecatalogue.data.model.TvShowEntity
 import com.mov.moviecatalogue.data.source.CatalogueRepository
-import com.mov.moviecatalogue.ui.movie.MovieViewModel
 import com.mov.moviecatalogue.utils.DataDummy
 import junit.framework.TestCase
 import org.junit.Assert
@@ -18,7 +17,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class TvShowViewModelTest   {
+class TvShowViewModelTest {
 
     private lateinit var viewModel: TvShowViewModel
 
@@ -26,7 +25,7 @@ class TvShowViewModelTest   {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var catalogueRepository : CatalogueRepository
+    private lateinit var catalogueRepository: CatalogueRepository
 
     @Mock
     private lateinit var observer: Observer<List<TvShowEntity>>
