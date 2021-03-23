@@ -15,15 +15,15 @@ import org.mockito.Mockito.mock
 class CatalogueRepositoryTest {
     private val remote = mock(RemoteRepository::class.java)
     private val catalogueRepository = FakeCatalogueRepository(remote)
-    private var dummyMovie = DataDummy.generateRemoteDummyMovies()[0]
+    private var dummyMovie = DataDummy.generateDummyMovie()[0]
     private var movieId = dummyMovie.id
-    private var dummytvshow = DataDummy.generateRemoteDummyTvShow()[0]
+    private var dummytvshow = DataDummy.generateDummyTvShow()[0]
     private var tvshowID = dummytvshow.id
 
     @Test
     fun getAllMovies() {
         val page = 1
-        val dummyMovies = DataDummy.generateRemoteDummyMovies()
+        val dummyMovies = DataDummy.generateDummyMovie()
         val movies: MutableLiveData<List<MovieEntity>> = MutableLiveData()
         movies.postValue(dummyMovies)
         `when`(remote.getMovies(page)).thenReturn(movies)
@@ -47,7 +47,7 @@ class CatalogueRepositoryTest {
     @Test
     fun getAllTvShow() {
         val page = 1
-        val dummyTvShow = DataDummy.generateRemoteDummyTvShow()
+        val dummyTvShow = DataDummy.generateDummyTvShow()
         val tvshows: MutableLiveData<List<TvShowEntity>> = MutableLiveData()
         tvshows.postValue(dummyTvShow)
         `when`(remote.getTvShows(page)).thenReturn(tvshows)
