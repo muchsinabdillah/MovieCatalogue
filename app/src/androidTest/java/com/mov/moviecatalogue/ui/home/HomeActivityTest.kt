@@ -18,6 +18,7 @@ class HomeActivityTest {
     @get:Rule
     var activityRule = ActivityScenarioRule(HomeActivity::class.java)
 
+
     @Test
     fun loadMovie() {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()))
@@ -35,7 +36,7 @@ class HomeActivityTest {
         )
         onView(withId(R.id.image_backdrop)).check(matches(isDisplayed()))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_title)).check(matches(withText(dummyTvShow[0].title)))
+        onView(withId(R.id.text_title)).check(matches(withText(dummyMovie[0].title)))
     }
     @Test
     fun loadTvShow() {
