@@ -15,14 +15,10 @@ import org.mockito.Mockito.mock
 class CatalogueRepositoryTest {
     private val remote = mock(RemoteRepository::class.java)
     private val catalogueRepository = FakeCatalogueRepository(remote)
-
-    private val dummyMovies = DataDummy.generateRemoteDummyMovies()
-    private val movieId = dummyMovies[0].id
-    //private val movieDetail = DataDummy.getRemoteDetailMovie()
-
-    private val dummyTvShow = DataDummy.generateRemoteDummyTvShow()
-    private val tvShowId = dummyTvShow[0].id
-    //private val tvShowDetail = DataDummy.getRemoteDetailTvShow()
+    private var dummyMovie = DataDummy.generateRemoteDummyMovies()[0]
+    private var movieId = dummyMovie.id
+    private var dummytvshow = DataDummy.generateRemoteDummyTvShow()[0]
+    private var tvshowID = dummytvshow.id
 
     @Test
     fun getAllMovies() {
@@ -38,6 +34,17 @@ class CatalogueRepositoryTest {
     }
 
     @Test
+    fun getMovie() {
+        val movie: MutableLiveData<MovieEntity> = MutableLiveData()
+        movie.postValue(dummyMovie)
+        `when`(remote.getMovieById(movieId)).thenReturn(movie)
+        val moviebyID = catalogueRepository.getMovie(movieId)
+        verify<RemoteRepository>(remote).getMovieById(movieId)
+        assertNotNull(moviebyID)
+        assertEquals(movie, moviebyID)
+    }
+
+    @Test
     fun getAllTvShow() {
         val page = 1
         val dummyTvShow = DataDummy.generateRemoteDummyTvShow()
@@ -50,5 +57,15 @@ class CatalogueRepositoryTest {
         assertEquals(tvshows.value?.size?.toLong(), tvshowEntity.value?.size?.toLong())
     }
 
+    @Test
+    fun getTvShow() {
+        val tvshow: MutableLiveData<TvShowEntity> = MutableLiveData()
+        tvshow.postValue(dummytvshow)
+        `when`(remote.getTvShowById(tvshowID)).thenReturn(tvshow)
+        val tvshowbyID = catalogueRepository.getTvShow(tvshowID)
+        verify<RemoteRepository>(remote).getTvShowById(tvshowID)
+        assertNotNull(tvshowbyID)
+        assertEquals(tvshow, tvshowbyID)
+    }
 
 }

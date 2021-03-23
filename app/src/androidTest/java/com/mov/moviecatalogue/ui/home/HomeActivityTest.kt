@@ -2,7 +2,6 @@ package com.mov.moviecatalogue.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -26,17 +25,16 @@ class HomeActivityTest {
     }
     @Test
     fun loadDetailMovie() {
+        onView(withText("MOVIE")).perform(click())
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_movie)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                        0,
-                        click()
-                )
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
         )
         onView(withId(R.id.image_backdrop)).check(matches(isDisplayed()))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.ratingBar)).check(matches(isDisplayed()))
     }
     @Test
     fun loadTvShow() {
