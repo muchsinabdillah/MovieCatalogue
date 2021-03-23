@@ -13,8 +13,8 @@ import org.junit.Rule
 import org.junit.Test
 
 class HomeActivityTest {
-    private val dummyMovie = DataDummy.generateDummyMovie()
-    private val dummyTvShow = DataDummy.generateDummyTvShow()
+    private val dummyMovie = DataDummy.generateRemoteDummyMovies()
+    private val dummyTvShow = DataDummy.generateRemoteDummyTvShow()
     @get:Rule
     var activityRule = ActivityScenarioRule(HomeActivity::class.java)
 
@@ -35,6 +35,7 @@ class HomeActivityTest {
         )
         onView(withId(R.id.image_backdrop)).check(matches(isDisplayed()))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_title)).check(matches(withText(dummyTvShow[0].title)))
     }
     @Test
     fun loadTvShow() {
@@ -55,6 +56,8 @@ class HomeActivityTest {
         onView(withId(R.id.tvdetil_image_backdrop)).check(matches(isDisplayed()))
         onView(withId(R.id.tvdetil_image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.tvdetil_text_title)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.tvdetil_text_title)).check(matches(withText(dummyTvShow[0].title)))
         onView(withId(R.id.tvdetil_ratingBar)).check(matches(isDisplayed()))
         onView(withId(R.id.tvdetil_text_release_movie)).check(matches(isDisplayed()))
     }
