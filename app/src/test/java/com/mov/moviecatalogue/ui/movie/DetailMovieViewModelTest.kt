@@ -42,7 +42,6 @@ class DetailMovieViewModelTest {
     fun getMovie() {
         val course = MutableLiveData<MovieEntity>()
         course.value = dummyMovie
-
         `when`(catalogueRepository.getMovie(movieId)).thenReturn(course)
         val courseEntity = viewModel.getMovie().value as MovieEntity
         verify(catalogueRepository).getMovie(movieId)
@@ -52,10 +51,8 @@ class DetailMovieViewModelTest {
         assertEquals(dummyMovie.description, courseEntity.description)
         assertEquals(dummyMovie.poster, courseEntity.poster)
         assertEquals(dummyMovie.title, courseEntity.title)
-
         viewModel.getMovie().observeForever(movieObserve)
         verify(movieObserve).onChanged(dummyMovie)
-
     }
 
 

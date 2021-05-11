@@ -1,35 +1,48 @@
 package com.mov.moviecatalogue.data.model
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MovieEntity (
-        @SerializedName("id")
-        val id: Int,
+@Entity(tableName = "Movie")
+data class MovieEntity(
+    @PrimaryKey(autoGenerate = false)
+    @SerializedName("id")
+    val id: Int,
 
-        @SerializedName("original_title")
-        val title: String,
+    @ColumnInfo(name = "original_title")
+    @SerializedName("original_title")
+    val title: String,
 
-        @SerializedName("overview")
-        val description: String,
+    @ColumnInfo(name = "overview")
+    @SerializedName("overview")
+    val description: String,
 
-        @SerializedName("poster_path")
-        val poster: String,
+    @ColumnInfo(name = "poster_path")
+    @SerializedName("poster_path")
+    val poster: String,
 
-        @SerializedName("backdrop_path")
-        val backdrop: String,
+    @ColumnInfo(name = "backdrop_path")
+    @SerializedName("backdrop_path")
+    val backdrop: String,
 
-        @SerializedName("vote_average")
-        val vote: Float,
+    @ColumnInfo(name = "vote_average")
+    @SerializedName("vote_average")
+    val vote: Float,
 
-        @SerializedName("release_date")
-        val releaseDate: String,
+    @ColumnInfo(name = "release_date")
+    @SerializedName("release_date")
+    val releaseDate: String,
 
-        @SerializedName("tagline")
-        val tagline: String,
+    @ColumnInfo(name = "tagline")
+    @SerializedName("tagline")
+    val tagline: String,
 
-        @SerializedName("status")
-        val status: String
-):Parcelable
+    @ColumnInfo(name = "status")
+    @SerializedName("status")
+    val status: String
+) : Parcelable

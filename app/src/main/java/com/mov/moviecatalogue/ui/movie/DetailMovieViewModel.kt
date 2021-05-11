@@ -12,4 +12,15 @@ class DetailMovieViewModel(private val catalogueRepository: CatalogueRepository)
         return catalogueRepository.getMovie(movieId)
     }
 
+    fun insertFavorite(movieEntity: MovieEntity) {
+        catalogueRepository.insertFavoriteMovie(movieEntity)
+    }
+
+    fun deleteFavorite(movieEntity: MovieEntity) {
+        catalogueRepository.deleteFavoriteMovie(movieEntity)
+    }
+
+    fun isFavorited(movieEntity: MovieEntity): Boolean {
+        return catalogueRepository.isFavoriteMovie(movieEntity)
+    }
 }

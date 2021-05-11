@@ -1,22 +1,19 @@
 package com.mov.moviecatalogue.ui.movie
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.data.model.MovieEntity
 import com.mov.moviecatalogue.databinding.FragmentMovieBinding
 import com.mov.moviecatalogue.ui.ViewModelFactory
-import kotlinx.android.synthetic.main.fragment_movie.*
+import com.mov.moviecatalogue.ui.home.HomeActivity
+import com.mov.moviecatalogue.utils.InfiniteScrollListener
 
 class MovieFragment : Fragment() {
-    private  lateinit var fragmentMovieBinding: FragmentMovieBinding
+    private lateinit var fragmentMovieBinding: FragmentMovieBinding
     private lateinit var adapter: MovieAdapter
     private lateinit var viewModel: MovieViewModel
     private var mMovies: MutableList<MovieEntity> = mutableListOf()
@@ -24,33 +21,49 @@ class MovieFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentMovieBinding = FragmentMovieBinding.inflate(layoutInflater, container, false)
         return fragmentMovieBinding.root
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if(activity != null) {
-            viewModel = obtainViewModel(requireActivity())
+        if (activity != null) {
+            (activity as HomeActivity).setActionBarTitle("Movies List")
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
             adapter = MovieAdapter()
-            fragmentMovieBinding.progressBar.visibility = View.VISIBLE
-            viewModel.page = page
-
-            viewModel.getMovies().observe(viewLifecycleOwner, Observer { movies ->
-                Log.d("myresponada",movies.toString())
-                mMovies.addAll(movies)
-                adapter.setMovies(mMovies)
-                fragmentMovieBinding.progressBar.visibility = View.INVISIBLE
-            })
-            rv_movie.adapter = adapter
-            rv_movie.layoutManager = LinearLayoutManager(context)
-            rv_movie.setHasFixedSize(true)
+            loadDataMovies()
+            fragmentMovieBinding.rvMovie.adapter = adapter
+            fragmentMovieBinding.rvMovie.layoutManager = LinearLayoutManager(context)
+            fragmentMovieBinding.rvMovie.setHasFixedSize(true)
 
         }
 
+        fragmentMovieBinding.rvMovie.addOnScrollListener(scrollData())
     }
-    private fun obtainViewModel(activity: FragmentActivity): MovieViewModel {
-        val factory = ViewModelFactory.getInstance(activity.application)
-        return ViewModelProviders.of(activity, factory).get(MovieViewModel::class.java)
+
+    private fun loadDataMovies() {
+        fragmentMovieBinding.progressBarM.start()
+        fragmentMovieBinding.progressBarM.loadingColor = R.color.black
+        viewModel.page = page
+        viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
+            mMovies.addAll(movies)
+            adapter.setMovies(mMovies)
+            fragmentMovieBinding.progressBarM.stop()
+        })
+
     }
+
+    private fun scrollData(): InfiniteScrollListener {
+        return object : InfiniteScrollListener() {
+            override fun onLoadMore() {
+                page += 1
+                loadDataMovies()
+            }
+        }
+    }
+
+
+
 }

@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath 'com.android.tools.build:gradle:4.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -40,4 +40,7 @@ ext {
     materialVersion = '1.2.1'
     recyclerViewVersion = '1.1.0'
     glideVersion = '4.11.0'
+    roomVersion = '2.2.3'
+    roomRuntimeVersion = '2.2.5'
+    pagingVersion = '2.1.1'
 }

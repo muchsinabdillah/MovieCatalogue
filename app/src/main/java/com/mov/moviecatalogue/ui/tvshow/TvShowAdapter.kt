@@ -1,7 +1,6 @@
 package com.mov.moviecatalogue.ui.tvshow
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,10 +10,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.mov.moviecatalogue.DetailTvShow
 import com.mov.moviecatalogue.R
 import com.mov.moviecatalogue.data.model.ContentId
-import com.mov.moviecatalogue.data.model.MovieEntity
 import com.mov.moviecatalogue.data.model.TvShowEntity
 import com.mov.moviecatalogue.databinding.ItemsTvshowBinding
-import com.mov.moviecatalogue.ui.detail.DetailMovieActivity
 import com.mov.moviecatalogue.utils.UtilsConstanta
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,8 +23,10 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
         this.listTvshow.addAll(tvshow)
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
-        val itemsTvShowBinding = ItemsTvshowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemsTvShowBinding =
+            ItemsTvshowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TvShowViewHolder(itemsTvShowBinding)
     }
 
@@ -38,7 +37,8 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
 
     override fun getItemCount(): Int = listTvshow.size
 
-    class TvShowViewHolder(private val binding: ItemsTvshowBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TvShowViewHolder(private val binding: ItemsTvshowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SimpleDateFormat")
         fun bind(tvshow: TvShowEntity) {
             with(binding) {
@@ -49,9 +49,9 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 formatter = SimpleDateFormat("dd-MM-yyyy")
                 tvGenre.text = formatter.format(date)
                 mvRating.numStars = 5
-                val bagidua : Float = tvshow.rating/2
+                val bagidua: Float = tvshow.rating / 2
                 mvRating.rating = bagidua
-                mvRating.stepSize =  .5f
+                mvRating.stepSize = .5f
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailTvShow::class.java)
                     val contentID = ContentId(tvshow.id)
@@ -63,7 +63,8 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                     .load(UtilsConstanta.IMG_URL + tvshow.poster)
                     .apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
-                            .error(R.drawable.ic_error))
+                            .error(R.drawable.ic_error)
+                    )
                     .into(imgPoster)
             }
         }

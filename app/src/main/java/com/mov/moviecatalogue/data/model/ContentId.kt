@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class ContentId (
+class ContentId(
     @SerializedName("id")
     val id: Int,
-):Parcelable
+) : Parcelable

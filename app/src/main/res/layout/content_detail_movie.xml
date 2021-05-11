@@ -5,77 +5,81 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:clipToPadding="false"
+
     android:descendantFocusability="blocksDescendants">
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/image_backdrop"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:contentDescription="@string/app_name" />
 
-    <ImageView
-        android:id="@+id/image_poster"
-        android:layout_width="107dp"
-        android:layout_height="122dp"
-        android:layout_marginTop="120dp"
-        android:src="@color/teal_200"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/image_backdrop"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic"
+                android:contentDescription="@string/app_name" />
 
-    <TextView
-        android:id="@+id/text_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:ellipsize="end"
-        android:maxLines="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/image_poster"
-        app:layout_constraintTop_toBottomOf="@+id/image_backdrop"
-        tools:text="Title" />
+            <ImageView
+                android:id="@+id/image_poster"
+                android:layout_width="107dp"
+                android:layout_height="122dp"
+                android:layout_marginTop="120dp"
+                android:src="@color/teal_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:numStars="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_title"
-        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_poster"
+                app:layout_constraintTop_toBottomOf="@+id/image_backdrop"
+                tools:text="Title" />
 
-    <TextView
-        android:id="@+id/text_status_movie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="start"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ratingBar"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        tools:text="Release" />
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:numStars="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/text_title"
+                app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+            <TextView
+                android:id="@+id/text_status_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ratingBar"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                tools:text="Release" />
 
             <TextView
                 android:id="@+id/text_release_movie"
@@ -91,68 +95,83 @@
                 tools:text="Release" />
 
             <TextView
-        android:id="@+id/text_title_tagLine"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/tagline"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/image_poster"
-        app:layout_constraintTop_toBottomOf="@+id/image_poster"/>
-    <TextView
-        android:id="@+id/text_tagLine"
+                android:id="@+id/text_title_tagLine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tagline"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/teal_700"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_poster"
+                app:layout_constraintTop_toBottomOf="@+id/image_poster" />
+
+            <TextView
+                android:id="@+id/text_tagLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/text_title_tagLine"
+                app:layout_constraintTop_toBottomOf="@+id/text_title_tagLine"
+                tools:text="Headline" />
+
+            <TextView
+                android:id="@+id/text_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/description"
+                android:textColor="@color/teal_700"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/text_tagLine"
+                app:layout_constraintTop_toBottomOf="@+id/text_tagLine" />
+
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/text_desc"
+                app:layout_constraintTop_toBottomOf="@+id/text_desc"
+                tools:text="Description" />
+
+            <com.victor.loading.rotate.RotateLoading
+                android:id="@+id/progress_bar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="start"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_title_tagLine"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_tagLine"
-        tools:text="Headline" />
-
-    <TextView
-        android:id="@+id/text_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/description"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_tagLine"
-        app:layout_constraintTop_toBottomOf="@+id/text_tagLine"/>
-
-    <TextView
-        android:id="@+id/text_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_desc"
-        app:layout_constraintTop_toBottomOf="@+id/text_desc"
-        tools:text="Description" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:id="@+id/fabFav"
+        android:src="@drawable/ic_tes_fav2"
+        android:backgroundTint="@color/purple_500"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        android:contentDescription="@string/app_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

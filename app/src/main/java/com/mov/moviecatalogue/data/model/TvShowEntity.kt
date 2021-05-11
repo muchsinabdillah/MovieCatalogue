@@ -1,26 +1,37 @@
 package com.mov.moviecatalogue.data.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class TvShowEntity (
-        @SerializedName("id")
-        val id: Int,
+@Entity(tableName = "TvShow")
+data class TvShowEntity(
+    @PrimaryKey(autoGenerate = false)
+    @SerializedName("id")
+    val id: Int,
 
-        @SerializedName("original_name")
-        val title: String,
+    @ColumnInfo(name = "original_name")
+    @SerializedName("original_name")
+    val title: String,
 
-        @SerializedName("overview")
-        val description: String,
+    @ColumnInfo(name = "overview")
+    @SerializedName("overview")
+    val description: String,
 
-        @SerializedName("poster_path")
-        val poster: String,
+    @ColumnInfo(name = "poster_path")
+    @SerializedName("poster_path")
+    val poster: String,
 
-        @SerializedName("backdrop_path")
-        val backdrop: String,
+    @ColumnInfo(name = "backdrop_path")
+    @SerializedName("backdrop_path")
+    val backdrop: String,
 
-        @SerializedName("vote_average")
-        val rating: Float,
+    @ColumnInfo(name = "vote_average")
+    @SerializedName("vote_average")
+    val rating: Float,
 
-        @SerializedName("first_air_date")
-        val firstAirDate: String
+    @ColumnInfo(name = "first_air_date")
+    @SerializedName("first_air_date")
+    val firstAirDate: String
 )

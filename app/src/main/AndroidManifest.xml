@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCatalogue"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SplashScreen"
+        <activity android:name=".DetailEticketActivity"></activity>
+        <activity
+            android:name=".SplashScreen"
             android:theme="@style/Theme.MovieCatalogue.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,25 +26,14 @@
         <activity
             android:name=".DetailTvShow"
             android:label="@string/title_activity_detail_tvshow"
-            android:parentActivityName=".ui.home.HomeActivity"
-            android:theme="@style/Theme.MovieCatalogue.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.home.HomeActivity" />
-        </activity>
+            android:theme="@style/Theme.MovieCatalogue.NoActionBar"></activity>
         <activity android:name=".ui.reader.CourseReaderActivity" />
         <activity
             android:name=".ui.detail.DetailMovieActivity"
             android:label="@string/title_activity_detail_movie"
-            android:parentActivityName=".ui.home.HomeActivity"
-            android:theme="@style/Theme.MovieCatalogue.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.home.HomeActivity" />
-        </activity>
+            android:theme="@style/Theme.MovieCatalogue.NoActionBar"></activity>
         <activity android:name=".ui.reader.MovieReaderActivity" />
-        <activity android:name=".ui.home.HomeActivity">
-        </activity>
+        <activity android:name=".ui.home.HomeActivity"></activity>
     </application>
 
 </manifest>

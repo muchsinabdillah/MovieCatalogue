@@ -11,6 +11,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
+
+
     @GET("movie/popular?api_key=$API_KEY")
     fun getAllMovie(@Query("page") page: Int): Call<MoviesResponse>
 

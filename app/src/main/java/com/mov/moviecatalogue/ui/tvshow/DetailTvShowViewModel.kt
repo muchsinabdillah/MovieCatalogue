@@ -12,4 +12,15 @@ class DetailTvShowViewModel(private val catalogueRepository: CatalogueRepository
         return catalogueRepository.getTvShow(tvShowId)
     }
 
+    fun insertFavorite(tvShowEntity: TvShowEntity) {
+        catalogueRepository.insertFavoriteTvShow(tvShowEntity)
+    }
+
+    fun deleteFavorite(tvShowEntity: TvShowEntity) {
+        catalogueRepository.deleteFavoriteTvShow(tvShowEntity)
+    }
+
+    fun isFavorited(tvShowEntity: TvShowEntity): Boolean {
+        return catalogueRepository.isFavoriteTvshow(tvShowEntity)
+    }
 }

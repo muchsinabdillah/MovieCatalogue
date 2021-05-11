@@ -14,76 +14,83 @@ import retrofit2.Response
 
 class RemoteRepository {
     private val myApiClient = ApiConfig.getApiConfig().create(ApiService::class.java)
+
     companion object {
-        fun getInstance(): RemoteRepository{
-            return  RemoteRepository()
+        fun getInstance(): RemoteRepository {
+            return RemoteRepository()
         }
     }
 
-    fun getMovies(page: Int): LiveData<List<MovieEntity>>{
-        val allmoview: MutableLiveData<List<MovieEntity>> = MutableLiveData()
+    fun getMovies(page: Int): LiveData<List<MovieEntity>> {
+        val muviesResult: MutableLiveData<List<MovieEntity>> = MutableLiveData()
         EspressoIdlingResource.increment()
         myApiClient.getAllMovie(page).enqueue(
-            object : Callback<MoviesResponse>{
+            object : Callback<MoviesResponse> {
                 override fun onResponse(
                     call: Call<MoviesResponse>,
                     response: Response<MoviesResponse>
                 ) {
-                    response.body()?.let {
-                        allmoview.postValue(it.result)
-                        Log.d("myrespon",it.toString())
-                       EspressoIdlingResource.decrement()
-                    }
+                    muviesResult.value = response.body()?.result as List<MovieEntity>
+                    EspressoIdlingResource.decrement()
                 }
 
                 override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                    Log.d("LogMe",t.localizedMessage)
-                }
-
-            }
-        )
-        return allmoview
-    }
-    fun getMovieById(id: Int): LiveData<MovieEntity>{
-        val movieById: MutableLiveData<MovieEntity> =  MutableLiveData()
-         EspressoIdlingResource.increment()
-        myApiClient.getMovieById(id).enqueue(
-            object : Callback<MovieEntity>{
-                override fun onResponse(call: Call<MovieEntity>, response: Response<MovieEntity>) {
-                    movieById.postValue(response.body())
+                    Log.e("RemoteDataSource", "getMovies onFailure : ${t.message}")
                     EspressoIdlingResource.decrement()
                 }
+            }
+        )
+        return muviesResult
+    }
+
+
+    fun getMovieById(id: Int): LiveData<MovieEntity> {
+        EspressoIdlingResource.increment()
+        val resultmovieById: MutableLiveData<MovieEntity> = MutableLiveData()
+        myApiClient.getMovieById(id).enqueue(
+            object : Callback<MovieEntity> {
+                override fun onResponse(call: Call<MovieEntity>, response: Response<MovieEntity>) {
+                    resultmovieById.postValue(response.body())
+                    EspressoIdlingResource.decrement()
+                }
+
                 override fun onFailure(call: Call<MovieEntity>, t: Throwable) {
-                    Log.d("LogMe",t.localizedMessage)
+                    Log.d("LogMe", t.localizedMessage)
                 }
             }
         )
-        return movieById
+        return resultmovieById
     }
-    fun getTvShows(page: Int): LiveData<List<TvShowEntity>>{
+
+    fun getTvShows(page: Int): LiveData<List<TvShowEntity>> {
         val allTvShow: MutableLiveData<List<TvShowEntity>> = MutableLiveData()
         EspressoIdlingResource.increment()
         myApiClient.getAllTvShow(page).enqueue(
-            object : Callback<TvShowResponse>{
-                override fun onResponse(call: Call<TvShowResponse>, response: Response<TvShowResponse>) {
-                    response.body()?.let { allTvShow.postValue(it.result)
-                    Log.d("myrespon",it.toString())
+            object : Callback<TvShowResponse> {
+                override fun onResponse(
+                    call: Call<TvShowResponse>,
+                    response: Response<TvShowResponse>
+                ) {
+                    response.body()?.let {
+                        allTvShow.postValue(it.result)
+                        Log.d("myrespon", it.toString())
                     }
                     EspressoIdlingResource.decrement()
                 }
+
                 override fun onFailure(call: Call<TvShowResponse>, t: Throwable) {
-                    Log.d("LogMe",t.localizedMessage)
+                    Log.d("LogMe", t.localizedMessage)
                 }
             }
         )
         return allTvShow
     }
 
-    fun getTvShowById(id: Int): LiveData<TvShowEntity>{
+    fun getTvShowById(id: Int): LiveData<TvShowEntity> {
         val tvShowById: MutableLiveData<TvShowEntity> = MutableLiveData()
-         EspressoIdlingResource.increment()
+        EspressoIdlingResource.increment()
         myApiClient.getTvShowById(id).enqueue(
-            object : Callback<TvShowEntity>{
+            object : Callback<TvShowEntity> {
                 override fun onResponse(
                     call: Call<TvShowEntity>,
                     response: Response<TvShowEntity>
@@ -91,22 +98,13 @@ class RemoteRepository {
                     tvShowById.postValue((response.body()))
                     EspressoIdlingResource.decrement()
                 }
+
                 override fun onFailure(call: Call<TvShowEntity>, t: Throwable) {
-                    Log.d("LogMe",t.localizedMessage)
+                    Log.d("LogMe", t.localizedMessage)
                 }
 
             }
         )
         return tvShowById
-    }
-    interface   LoadMOvieCallBack {
-        fun onAllCoursesReceived(moviesResponse: List<MovieEntity>)
-    }
-    interface LoadTvShowCallBack {
-        fun onAllCoursesReceived(tvShowResponse: List<TvShowEntity>)
-    }
-
-    interface LoadContentCallback {
-        fun onContentReceived(contentResponse: MovieEntity)
     }
 }
