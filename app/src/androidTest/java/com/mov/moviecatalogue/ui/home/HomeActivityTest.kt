@@ -72,7 +72,6 @@ class HomeActivityTest {
         onView(withId(R.id.image_backdrop)).check(matches(isDisplayed()))
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_title)).check(matches(withText(dummyMovie[0].title)))
     }
 
     @Test
@@ -113,7 +112,6 @@ class HomeActivityTest {
         onView(withId(R.id.tvdetil_image_backdrop)).check(matches(isDisplayed()))
         onView(withId(R.id.tvdetil_image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.tvdetil_text_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.tvdetil_text_title)).check(matches(withText(dummyTvShow[0].title)))
         onView(withId(R.id.tvdetil_ratingBar)).check(matches(isDisplayed()))
         onView(withId(R.id.tvdetil_text_release_movie)).check(matches(isDisplayed()))
     }

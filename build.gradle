@@ -30,7 +30,7 @@ ext {
     coreVersion = '1.3.2'
     constraintLayoutVersion = '2.0.4'
     junitVersion = '4.13.1'
-    junitExtversion = '1.1.2'
+    junitExtversion = '1.1.1'
     espressoVersion = '3.3.0'
     androidTestVersion = '1.3.0'
     androidCoreTestVersion = '2.1.0'
